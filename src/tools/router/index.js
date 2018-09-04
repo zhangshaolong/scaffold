@@ -14,7 +14,10 @@ const Router = {
       let pair = hash.slice(1).split('?')
       let querys = getQueryString('?' + pair[1])
       let path = pair[0]
-      const Clazz = pathMap[path]
+      let Clazz = pathMap[path]
+      if (!Clazz) {
+        Clazz = pathMap['404']
+      }
       if (Clazz) {
         const context = Router.context
         if (context.path !== path) {
