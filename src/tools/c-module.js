@@ -1,4 +1,4 @@
-import Simplite from 'simplite'
+import loader from './import-module'
 
 class Module extends HTMLElement {
   static get observedAttributes() {
@@ -9,24 +9,12 @@ class Module extends HTMLElement {
     super()
   }
 
-  importModule (path, querys) {
-    import(`src/${path}`).then(({default: Module}) => {
-      const module = this.module = new Module(querys)
-      if (module.tpl) {
-        Simplite.addTemplate(`src/${path}`, module.tpl)
-        module.tplRender = Simplite.compile(`src/${path}`)
-      }
-      module.container = this
-      module.init(querys)
-    }).catch((err) => {
-      console.log(err.message)
-    })
-  }
-
   connectedCallback () {
     let path = this.getAttribute('path')
     if (path) {
-      this.importModule(path, JSON.parse(this.getAttribute('querys')))
+      loader(path, JSON.parse(this.getAttribute('querys')), this).then((module) => {
+        this.module = module
+      })
     }
   }
 
@@ -35,13 +23,8 @@ class Module extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    const querys = JSON.parse(this.getAttribute('querys'))
-    if (name === 'path') {
-      if (this.hasAttribute('root')) {
-        this.importModule(newValue, querys)
-      }
-    } else {
-      this.module && this.module.update(querys)
+    if (name === 'querys') {
+      this.module && this.module.update(JSON.parse(newValue))
     }
   }
 }

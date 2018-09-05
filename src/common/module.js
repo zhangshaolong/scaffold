@@ -7,9 +7,11 @@ export default class Module {
 
   init (querys) {
     this.render(querys)
-
     this.bindEvents()
+    this.inited(querys)
   }
+
+  inited (querys) {}
 
   bindEvents () {}
 

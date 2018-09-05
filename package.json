@@ -29,6 +29,8 @@
     "webpack-dev-server": "^3.1.7"
   },
   "dependencies": {
+    "event-async-emitter": "0.0.3",
+    "service-api": "0.0.1",
     "simplite": "0.0.2"
   }
 }

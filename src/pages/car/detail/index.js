@@ -2,6 +2,8 @@ import tpl from './index.tpl'
 
 import Module from 'src/common/module'
 
+import service from 'service-api'
+
 export default class CarDetail extends Module {
 
   constructor (querys) {
@@ -16,7 +18,17 @@ export default class CarDetail extends Module {
     }, false)
   }
 
+  inited (querys) {
+    service.get('/car/detail', querys, {
+      context: this.container
+    }).then((resp) => {
+      let data = resp.data
+      this.render(data)
+    })
+  }
+
   update (querys) {
+    this.inited(querys)
     console.log('detail update', querys)
   }
 

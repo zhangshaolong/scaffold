@@ -1,8 +1,11 @@
 import {getQueryString} from 'tools/utils'
+import loader from '../import-module'
+
 
 const Router = {
   context: {
-    path: null
+    path: null,
+    module: null
   },
   start: (pathMap, rootModule) => {
     window.addEventListener('hashchange', (e) => {
@@ -21,9 +24,13 @@ const Router = {
         const context = Router.context
         if (context.path !== path) {
           context.path = path
-          rootModule.setAttribute('path', modulePath)
+          context.module && context.module.dispose()
+          loader(modulePath, querys, rootModule).then((module) => {
+            context.module = module
+          })
+        } else {
+          context.module.update(querys)
         }
-        rootModule.setAttribute('querys', JSON.stringify(querys))
       } else {
         // 404
         console.log('404')

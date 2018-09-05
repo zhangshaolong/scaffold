@@ -1,1 +1,1 @@
-<div style="background: yellow;">aaaaafdf</div>
+<div style="background: yellow;">aaaaafdf{{JSON.stringify(_this)}}</div>
