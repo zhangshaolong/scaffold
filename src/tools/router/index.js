@@ -2,10 +2,9 @@ import {getQueryString} from 'tools/utils'
 
 const Router = {
   context: {
-    path: null,
-    module: null
+    path: null
   },
-  start: (pathMap, rootNode) => {
+  start: (pathMap, rootModule) => {
     window.addEventListener('hashchange', (e) => {
       let hash = window.location.hash
       if (!hash) {
@@ -14,22 +13,17 @@ const Router = {
       let pair = hash.slice(1).split('?')
       let querys = getQueryString('?' + pair[1])
       let path = pair[0]
-      let Clazz = pathMap[path]
-      if (!Clazz) {
-        Clazz = pathMap['404']
+      let modulePath = pathMap[path]
+      if (!modulePath) {
+        modulePath = pathMap['404']
       }
-      if (Clazz) {
+      if (modulePath) {
         const context = Router.context
         if (context.path !== path) {
           context.path = path
-          if (context.module) {
-            context.module.dispose()
-          }
-          context.module = new Clazz(querys)
-          context.module.init(rootNode)
-        } else {
-          context.module.update(querys)
+          rootModule.setAttribute('path', modulePath)
         }
+        rootModule.setAttribute('querys', JSON.stringify(querys))
       } else {
         // 404
         console.log('404')

@@ -177,31 +177,6 @@ const downloadFile = ({content, name, type = 'application/octet-stream'}) => {
   window.URL.revokeObjectURL(url)
 }
 
-/**
- * use latlng to get city info, just support suzhou and beijing now
- */
-
-
-const getCity = (lat, lng) => {
-  lng = parseFloat(lng)
-  lat = parseFloat(lat)
-  const HAIDIAN_LAT_MAX = 40.09, HAIDIAN_LAT_MIN = 39.53, HAIDIAN_LNG_MAX = 116.23, HAIDIAN_LNG_MIN = 116.03
-  const BEIJING_LAT_MAX = 40.63065370180113, BEIJING_LAT_MIN = 39.55382471316116, BEIJING_LNG_MAX = 117.14053069269947, BEIJING_LNG_MIN = 115.70136294189204
-  const SUZHOU_LAT_MAX = 31.564065556886117, SUZHOU_LAT_MIN = 31.086889975184427, SUZHOU_LNG_MAX = 121.09976426743266, SUZHOU_LNG_MIN = 120.43049958346607
-  const cityInfo = {}
-  if (lat >= HAIDIAN_LAT_MIN && lat <= HAIDIAN_LAT_MAX && lng >= HAIDIAN_LNG_MIN && lng <= HAIDIAN_LNG_MAX) {
-    cityInfo.id = 7
-    cityInfo.name = 'Haidian'
-  } else if (lat >= BEIJING_LAT_MIN && lat <= BEIJING_LAT_MAX && lng >= BEIJING_LNG_MIN && lng <= BEIJING_LNG_MAX) {
-    cityInfo.id = 4
-    cityInfo.name = 'Shunyi'
-  } else if (lat >= SUZHOU_LAT_MIN && lat <= SUZHOU_LAT_MAX && lng >= SUZHOU_LNG_MIN && lng <= SUZHOU_LNG_MAX) {
-    cityInfo.id = 2
-    cityInfo.name = 'Suzhou'
-  }
-  return cityInfo
-}
-
 const htmlEncode = (str) => {
   if (typeof str === 'undefined') {
     return ''
@@ -273,6 +248,5 @@ export {
   getFrag,
   downloadFile,
   htmlEncode,
-  getCity,
   copyText2Clipboard
 }

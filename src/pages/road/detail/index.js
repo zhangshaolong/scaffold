@@ -2,12 +2,15 @@ import tpl from './index.tpl'
 
 import Module from 'src/common/module'
 
-export default class CarDetail extends Module {
-
+export default class RoadDetail extends Module {
   constructor (querys) {
     super(tpl)
 
-    console.log('car detail', querys)
+    console.log('road detail', querys)
+  }
+
+  update (querys) {
+    console.log('RoadDetail update', querys)
   }
 
   bindEvents () {
@@ -16,11 +19,7 @@ export default class CarDetail extends Module {
     }, false)
   }
 
-  update (querys) {
-    console.log('detail update', querys)
-  }
-
   dispose () {
-    console.log('car detail dispose')
+    console.log('RoadDetail dispose')
   }
 }

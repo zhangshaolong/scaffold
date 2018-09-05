@@ -1,18 +1,19 @@
-export default class CarList {
-  constructor (querys) {
-    debugger
-    console.log('lsit')
-  }
+import tpl from './index.tpl'
 
-  init (context) {
-    debugger
+import Module from 'src/common/module'
+
+export default class CarList extends Module {
+  constructor (querys) {
+    super(tpl)
+
+    console.log('car list', querys)
   }
 
   update (querys) {
-    debugger
+    console.log('list update', querys)
   }
 
   dispose () {
-    debugger
+    console.log('car list dispose')
   }
 }
