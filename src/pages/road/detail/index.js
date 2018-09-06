@@ -14,12 +14,11 @@ export default class RoadDetail extends Module {
   }
 
   bindEvents () {
-    this.container.addEventListener('click', (e) => {
-      console.log('click', e.target)
-    }, false)
+    
   }
 
   dispose () {
+    super.dispose()
     console.log('RoadDetail dispose')
   }
 }

@@ -8,14 +8,35 @@ export default class CarDetail extends Module {
 
   constructor (querys) {
     super(tpl)
-
     console.log('car detail', querys)
   }
 
   bindEvents () {
-    this.container.addEventListener('click', (e) => {
-      console.log('click', e.target)
-    }, false)
+    return {
+      click: [
+        {
+          type: 'className',
+          value: 'car-name',
+          handler: (element, event) => {
+            console.log('name', element)
+          }
+        },
+        {
+          type: 'id',
+          value: 'car-id',
+          handler: (element, event) => {
+            console.log('id', element)
+          }
+        },
+        {
+          type: 'element',
+          value: this.container.childNodes[2],
+          handler: (element, event) => {
+            console.log('element', element)
+          }
+        }
+      ]
+    }
   }
 
   inited (querys) {
@@ -33,6 +54,7 @@ export default class CarDetail extends Module {
   }
 
   dispose () {
+    super.dispose()
     console.log('car detail dispose')
   }
 }

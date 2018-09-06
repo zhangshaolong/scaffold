@@ -1,6 +1,5 @@
-import {getQueryString} from 'tools/utils'
-import loader from '../import-module'
-
+import { getQueryString } from 'tools/utils'
+import loader from '../module-loader'
 
 const Router = {
   context: {

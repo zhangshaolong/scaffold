@@ -1,17 +1,19 @@
-import loader from './import-module'
+import loader from './module-loader'
 
-class Module extends HTMLElement {
+class CModule extends HTMLElement {
   static get observedAttributes() {
-    return ['path', 'querys']
+    return ['querys']
   }
 
   constructor () {
     super()
+    this.attributeChangedTimer = null
   }
 
   connectedCallback () {
     let path = this.getAttribute('path')
     if (path) {
+      let a = JSON.parse(this.getAttribute('querys'))
       loader(path, JSON.parse(this.getAttribute('querys')), this).then((module) => {
         this.module = module
       })
@@ -23,10 +25,13 @@ class Module extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'querys') {
-      this.module && this.module.update(JSON.parse(newValue))
-    }
+    clearTimeout(this.attributeChangedTimer)
+    this.attributeChangedTimer = setTimeout(() => {
+      if (name === 'querys') {
+        this.module && this.module.update(JSON.parse(newValue))
+      }
+    }, 0)
   }
 }
 
-customElements.define('c-module', Module)
+customElements.define('c-module', CModule)

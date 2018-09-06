@@ -13,6 +13,7 @@ export default class RoadList extends Module {
   }
 
   dispose () {
+    super.dispose()
     console.log('RoadList dispose')
   }
 }

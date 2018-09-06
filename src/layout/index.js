@@ -5,6 +5,8 @@ import Module from 'src/common/module'
 import Router from 'tools/router'
 import routers from 'configs/router'
 
+import './index.less'
+
 export default class Layout extends Module {
 
   constructor (querys) {
@@ -16,6 +18,7 @@ export default class Layout extends Module {
   }
 
   dispose () {
+    super.dispose()
     console.log('layout dispose')
   }
 }
