@@ -23,6 +23,7 @@
     "mini-css-extract-plugin": "^0.4.2",
     "mock-proxy-middleware": "^1.9.15",
     "raw-loader": "^0.5.1",
+    "simplite-loader": "0.0.1",
     "style-loader": "^0.23.0",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",

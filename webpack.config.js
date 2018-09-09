@@ -48,9 +48,9 @@ module.exports = {
         test: /\.tpl$/,
         exclude: /node_modules/,
         use: {
-          loader: 'raw-loader'
+          loader: 'simplite-loader'
         }
-      },
+      }
     ]
   },
   resolve: {

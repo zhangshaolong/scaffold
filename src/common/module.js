@@ -74,8 +74,8 @@ export default class Module {
   }
 
   render (data) {
-    if (this.tplRender) {
-      this.container.innerHTML = this.tplRender(data)
+    if (this.tpl) {
+      this.container.innerHTML = this.tpl(data)
     }
   }
 

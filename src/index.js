@@ -1,5 +1,11 @@
 import 'tools/c-module'
 import service from 'service-api'
+import Simplite from 'simplite'
+Simplite.dataKey = 'data'
+
+Simplite.addFilter('aaa', (data) => {
+  return data + 'eeeeee'
+})
 
 import './index.less'
 

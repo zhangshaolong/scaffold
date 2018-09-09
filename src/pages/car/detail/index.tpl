@@ -1,16 +1,16 @@
 <div id="car-id">
-  car id: <div class="car-name">{{_this.id}}</div>
+  car id: <div class="car-name">{{data.id}}</div>
 </div>
 
 <div class="car-name">
-  car name: {{_this.name}}
+  car name: {{filter('aaa', data.name)}}
 </div>
 
 <div>
-  car price: {{_this.price}}
+  car price: {{data.price}}
 </div>
 <%
-  let json = JSON.stringify(_this || {test: true});
+  let json = JSON.stringify(data || {test: true});
 %>
 <c-module path="pages/road/list" querys='{{json}}'></c-module>
 
