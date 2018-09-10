@@ -1,4 +1,5 @@
 test
+asset
 *.bat
 *.psd
 npm-debug.log
@@ -6,8 +7,8 @@ router.sublime-project
 router.sublime-workspace
 .DS_Store
 node_modules
-dist
 .swp
 .idea
 .project
 .module-cache
+package-lock.json
