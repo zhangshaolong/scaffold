@@ -34,7 +34,7 @@ export default class Module {
   }
 
   init (querys) {
-    this.render(querys)
+    this.render()
     let events = this.bindEvents()
     if (events) {
       this.delegate(events)
@@ -75,7 +75,7 @@ export default class Module {
 
   render (data) {
     if (this.tpl) {
-      this.container.innerHTML = this.tpl(data)
+      this.container.innerHTML = this.tpl(data || this.data)
     }
   }
 

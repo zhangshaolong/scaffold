@@ -20,6 +20,7 @@ const Router = {
         modulePath = pathMap['404']
       }
       if (modulePath) {
+        rootModule.setAttribute('path', modulePath)
         const context = Router.context
         if (context.path !== path) {
           context.path = path

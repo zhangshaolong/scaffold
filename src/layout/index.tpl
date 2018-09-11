@@ -2,4 +2,4 @@
 <div id="root-menu">
   <c-module path="layout/menu"></c-module>
 </div>
-<div id="root-container"></div>
+<c-module id="root-container"></c-module>

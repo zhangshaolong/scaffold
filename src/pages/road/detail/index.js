@@ -17,6 +17,10 @@ export default class RoadDetail extends Module {
     
   }
 
+  inited () {
+    console.log('road detail', this.data)
+  }
+
   dispose () {
     super.dispose()
     console.log('RoadDetail dispose')

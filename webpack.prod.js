@@ -3,6 +3,7 @@ const common = require('./webpack.common.js')(true)
 const Uglify = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const config = {
+  mode: 'production',
   optimization: {
     minimizer: [
       new webpack.optimize.OccurrenceOrderPlugin(),

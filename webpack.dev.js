@@ -18,6 +18,7 @@ if (args.length) {
 
 const publicPath = config.publicPath
 const webpackConfig = {
+  mode: 'development',
   cache: true,
   devtool: 'source-map',
   devServer: {

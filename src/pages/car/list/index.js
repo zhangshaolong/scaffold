@@ -7,6 +7,9 @@ export default class CarList extends Module {
     super(tpl)
 
     console.log('car list', querys)
+    this.data = {
+      p: 'car list'
+    }
   }
 
   bindEvents () {

@@ -12,6 +12,10 @@ export default class RoadList extends Module {
     console.log('RoadList update', querys)
   }
 
+  inited () {
+    console.log('road list', this.data)
+  }
+
   dispose () {
     super.dispose()
     console.log('RoadList dispose')

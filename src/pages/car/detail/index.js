@@ -9,9 +9,14 @@ export default class CarDetail extends Module {
   constructor (querys) {
     super(tpl)
     console.log('car detail', querys)
+
+    this.data = {
+      p: 'car detail'
+    }
   }
 
   bindEvents () {
+
     return {
       click: [
         {
