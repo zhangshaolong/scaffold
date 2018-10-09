@@ -13,7 +13,6 @@ class CModule extends HTMLElement {
   connectedCallback () {
     let path = this.getAttribute('path')
     if (path) {
-      let a = JSON.parse(this.getAttribute('querys'))
       loader(path, JSON.parse(this.getAttribute('querys')), this).then((module) => {
         this.module = module
       })

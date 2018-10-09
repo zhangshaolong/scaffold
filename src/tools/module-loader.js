@@ -34,7 +34,6 @@ export default (path, querys, container) => {
       module.init(querys)
       resolve(module)
     }).catch((err) => {
-      console.log(err.message)
       reject(err.message)
     })
   })
