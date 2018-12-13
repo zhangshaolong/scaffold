@@ -1,13 +1,16 @@
+import 'webpack-jquery-ui'
+import 'webpack-jquery-ui/css'
 import 'tools/c-module'
 import service from 'service-api'
 import Simplite from 'simplite'
+
+import './index.less'
+
 Simplite.dataKey = 'data'
 
 Simplite.addFilter('aaa', (data) => {
   return data + 'eeeeee'
 })
-
-import './index.less'
 
 const showLoading = (container, tip) => {
   let loadingCount = container.dataset._loadingCount || 0

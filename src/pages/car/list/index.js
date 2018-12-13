@@ -40,6 +40,18 @@ export default class CarList extends Module {
     }
   }
 
+  inited () {
+    let datepicker = $('#datepicker').datepicker({
+      altFormat: "yy-mm-dd",
+      appendText: "(yyyy-mm-dd)",
+      dateFormat: "yy-mm-dd"
+      // gotoCurrent: true,
+      // onSelect: () => {
+      //   datepicker.show()
+      // }
+    })
+  }
+
   update (querys) {
     console.log('list update', querys)
   }

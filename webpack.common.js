@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
@@ -92,6 +93,12 @@ module.exports = (isProt) => {
           filename: isProt ? '[name]-[hash].css' : '[name].css',
           disable: !isProt,
           allChunks: true
+        }),
+        new webpack.ProvidePlugin({
+          '$': 'jquery',
+          'jQuery': 'jquery',
+          'window.jQuery': 'jquery',
+          'window.$': 'jquery'
         })
       ]
     }

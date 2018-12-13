@@ -60,6 +60,7 @@ export default class CarDetail extends Module {
 
   dispose () {
     super.dispose()
+    service.clear()
     console.log('car detail dispose')
   }
 }

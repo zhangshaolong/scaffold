@@ -1,5 +1,6 @@
 import { getQueryString } from 'tools/utils'
 import loader from '../module-loader'
+import EventEmitter from 'event-async-emitter'
 
 const Router = {
   context: {
@@ -31,6 +32,7 @@ const Router = {
         } else {
           context.module.update(querys)
         }
+        EventEmitter.fire('router-change', path)
       } else {
         // 404
         console.log('404')

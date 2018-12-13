@@ -4,5 +4,7 @@
 
 <div>child2</div>
 
+<input id="datepicker" />
+
 <c-module path="pages/road/list"></c-module>
 <c-module path="pages/road/detail"></c-module>
