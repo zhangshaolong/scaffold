@@ -1,3 +1,4 @@
+import loader, { setLoader } from './loader'
 
 const checkCondition = {
   className: (node, value) => {
@@ -26,10 +27,9 @@ const loopCheck = (root, target, value, checkFun) => {
   }
 }
 
-export default class Module {
+class Module {
 
-  constructor (tpl) {
-    this.tpl = tpl
+  constructor (querys) {
     this.toBeDisposes = []
   }
 
@@ -86,4 +86,44 @@ export default class Module {
     this.toBeDisposes.length = 0
     console.log('root dispose')
   }
+}
+
+class CModule extends HTMLElement {
+  static get observedAttributes() {
+    return ['querys']
+  }
+
+  constructor () {
+    super()
+    this.attributeChangedTimer = null
+  }
+
+  connectedCallback () {
+    let path = this.getAttribute('path')
+    if (path != null) {
+      loader(path, JSON.parse(this.getAttribute('querys')), this, (module) => {
+        this.module = module
+      })
+    }
+  }
+
+  disconnectedCallback () {
+    this.module && this.module.dispose()
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    clearTimeout(this.attributeChangedTimer)
+    this.attributeChangedTimer = setTimeout(() => {
+      if (name === 'querys') {
+        this.module && this.module.update(JSON.parse(newValue))
+      }
+    }, 0)
+  }
+}
+
+customElements.define('c-module', CModule)
+
+export {
+  Module,
+  setLoader
 }

@@ -1,12 +1,12 @@
 const mockProxyMiddleware = require('mock-proxy-middleware')
-const common = require('./webpack.common.js')(false)
-const mocks = require('./mock-proxy-config')
+const common = require('./common')(false)
+const mocks = require('../configs/mock-proxy')
+const serverConfig = require('../configs/server')
 const commander = require('child_process')
-const config = require('./config')
 
 // 可以通过下边的命令行修改本地server的端口
-// npm start --port xxxx
-let port = config.devPort
+// npm start --port 8880
+let port = serverConfig.devPort
 const args = process.argv
 if (args.length) {
   for (let i = 0; i < args.length; i++) {
@@ -15,15 +15,14 @@ if (args.length) {
     }
   }
 }
-
-const publicPath = config.publicPath
-const webpackConfig = {
+const publicPath = serverConfig.publicPath
+const config = {
   mode: 'development',
   cache: true,
   devtool: 'source-map',
   devServer: {
     disableHostCheck: true,
-    contentBase: config.buildPath,
+    contentBase: serverConfig.buildPath,
     host: '0.0.0.0',
     port: port,
     publicPath: publicPath,
@@ -32,7 +31,7 @@ const webpackConfig = {
     compress: true,
     clientLogLevel: 'none',
     watchOptions: {
-      ignored: [/node_modules/, /mock/]
+      ignored: [/\/node_modules\//, /\/mock\//]
     },
     before: (app) => {
       for (let i = 0; i < mocks.length; i++) {
@@ -50,8 +49,7 @@ const webpackConfig = {
       }
       commander.exec(`${cmd} http://localhost:${port}${publicPath}/`)
     }
-  },
-  plugins: []
+  }
 }
 
-module.exports = common.mergeConfig(webpackConfig)
+module.exports = common.mergeConfig(config)

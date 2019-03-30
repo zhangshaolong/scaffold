@@ -1,6 +1,20 @@
-import { getQueryString } from 'tools/utils'
-import loader from '../module-loader'
-import EventEmitter from 'event-async-emitter'
+import loader from '../module/loader'
+
+const getQueryString = function (queryStr) {
+  let len = arguments.length
+  if (len === 1) {
+    let querys = {}
+    queryStr.replace(/(?:\?|&)([^=]+)=([^&$]*)/g, (all, key, val) => {
+      querys[key] = decodeURIComponent(val)
+    })
+    return querys
+  } else if (len === 2) {
+    let rst = new RegExp('[?&]' + arguments[1] + '=([^&$]*)').exec(queryStr)
+    return rst && decodeURIComponent(rst[1])
+  }
+}
+
+const watches = []
 
 const Router = {
   context: {
@@ -23,16 +37,20 @@ const Router = {
       if (modulePath) {
         rootModule.setAttribute('path', modulePath)
         const context = Router.context
-        if (context.path !== path) {
+        let oldPath = context.path
+        if (oldPath !== path) {
           context.path = path
           context.module && context.module.dispose()
-          loader(modulePath, querys, rootModule).then((module) => {
+          loader(modulePath, querys, rootModule, (module) => {
             context.module = module
           })
         } else {
           context.module.update(querys)
         }
-        EventEmitter.fire('router-change', path)
+
+        watches.forEach((watcher) => {
+          watcher(path, oldPath, querys)
+        })
       } else {
         // 404
         console.log('404')
@@ -41,6 +59,9 @@ const Router = {
     const evt = document.createEvent('HTMLEvents')
     evt.initEvent('hashchange', true, true)
     window.dispatchEvent(evt)
+  },
+  watch: (watcher) => {
+    watches.push(watcher)
   }
 }
 

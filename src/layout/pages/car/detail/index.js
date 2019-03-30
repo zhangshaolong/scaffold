@@ -1,18 +1,19 @@
-import tpl from './index.tpl'
+import { Module } from 'nuwa'
 
-import Module from 'src/common/module'
+import service from 'service-api'
 
-export default class CarList extends Module {
+export default class CarDetail extends Module {
+
   constructor (querys) {
-    super(tpl)
-
-    console.log('car list', querys)
+    super(querys)
+    console.log('car detail', querys)
     this.data = {
-      p: 'car list'
+      p: 'car detail'
     }
   }
 
   bindEvents () {
+
     return {
       click: [
         {
@@ -40,24 +41,23 @@ export default class CarList extends Module {
     }
   }
 
-  inited () {
-    let datepicker = $('#datepicker').datepicker({
-      altFormat: "yy-mm-dd",
-      appendText: "(yyyy-mm-dd)",
-      dateFormat: "yy-mm-dd"
-      // gotoCurrent: true,
-      // onSelect: () => {
-      //   datepicker.show()
-      // }
+  inited (querys) {
+    service.get('/car/detail', querys, {
+      context: this.container
+    }).then((resp) => {
+      let data = resp.data
+      this.render(data)
     })
   }
 
   update (querys) {
-    console.log('list update', querys)
+    this.inited(querys)
+    console.log('detail update', querys)
   }
 
   dispose () {
     super.dispose()
-    console.log('car list dispose')
+    service.clear()
+    console.log('car detail dispose')
   }
 }

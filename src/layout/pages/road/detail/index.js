@@ -1,11 +1,8 @@
-import tpl from './index.tpl'
-
-import Module from 'src/common/module'
+import { Module } from 'nuwa'
 
 export default class RoadDetail extends Module {
   constructor (querys) {
-    super(tpl)
-
+    super(querys)
     console.log('road detail', querys)
   }
 

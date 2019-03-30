@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: '',
-  buildPath: '/asset',
+  buildPath: '../../output',
   devPort: 8885,
   testPort: 8080
 }

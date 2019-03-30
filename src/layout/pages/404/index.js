@@ -1,6 +1,6 @@
 export default class NotFound {
   constructor (querys) {
-    debugger
+    super(querys)
     console.log('not found')
   }
 

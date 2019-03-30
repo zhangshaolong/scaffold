@@ -1,5 +1,5 @@
 test
-asset
+output
 *.bat
 *.psd
 npm-debug.log

@@ -1,17 +1,10 @@
-import tpl from './index.tpl'
+import { Module, Router } from 'nuwa'
 
-import Module from 'src/common/module'
-
-import Router from 'tools/router'
-import routers from 'configs/router'
+import routers from '../../router'
 
 import './index.less'
 
 export default class Layout extends Module {
-
-  constructor (querys) {
-    super(tpl)
-  }
 
   bindEvents () {
     Router.start(routers, document.getElementById('root-container'))

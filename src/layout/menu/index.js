@@ -1,7 +1,4 @@
-import tpl from './index.tpl'
-
-import Module from 'src/common/module'
-import EventEmitter from 'event-async-emitter'
+import { Module, Router } from 'nuwa'
 
 let menu
 
@@ -20,13 +17,9 @@ const routerChangeHandler = (path) => {
 
 export default class Menu extends Module {
 
-  constructor (querys) {
-    super(tpl)
-  }
-
   inited () {
     menu = $('#menu', this.container).menu()
-    EventEmitter.on('router-change', routerChangeHandler)
+    Router.watch(routerChangeHandler)
   }
 
   bindEvents () {
@@ -43,7 +36,6 @@ export default class Menu extends Module {
 
   dispose () {
     super.dispose()
-    EventEmitter.un('router-change', routerChangeHandler)
     console.log('menu dispose')
   }
 }

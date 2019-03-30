@@ -2,9 +2,9 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
-const config = require('./config')
+const config = require('../configs/server')
 
-const buildPath = __dirname + config.buildPath
+const buildPath = path.resolve(__dirname, config.buildPath)
 
 module.exports = (isProt) => {
 
@@ -23,7 +23,7 @@ module.exports = (isProt) => {
     },
     configs: {
       entry: {
-        main: __dirname + '/src/index.js'
+        main: path.resolve(__dirname, '../../src/index.js')
       },
       output: {
         path: buildPath,
@@ -32,10 +32,8 @@ module.exports = (isProt) => {
       },
       resolve: {
         alias: {
-          src: path.join(__dirname, 'src'),
-          configs: path.join(__dirname, 'src', 'configs'),
-          pages: path.join(__dirname, 'src', 'pages'),
-          tools: path.join(__dirname, 'src', 'tools')
+          src: path.resolve(__dirname, '../../src'),
+          nuwa: path.resolve(__dirname, '../../nuwa')
         }
       },
       module: {
@@ -54,7 +52,7 @@ module.exports = (isProt) => {
               {
                 loader: 'css-loader',
                 options: {
-                  minimize: isProt //css压缩
+                  minimize: isProt
                 }
               },
               'less-loader'
@@ -73,15 +71,12 @@ module.exports = (isProt) => {
           }
         ]
       },
-      node: {
-        fs: 'empty'
-      },
       plugins: [
         new HtmlWebpackPlugin({
-          inject: true,
+          inject: 'head',
           hash: false,
           chunksSortMode: 'dependency',
-          template: __dirname + '/src/index.html',
+          template: path.resolve(__dirname, '../../src/index.html'),
           minify: isProt ? {
             collapseInlineTagWhitespace: true,
             removeComments: true,

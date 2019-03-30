@@ -5,14 +5,14 @@
 
 const express = require('express')
 const mockProxyMiddleware = require('mock-proxy-middleware')
-const mocks = require('./mock-proxy-config')
+const mocks = require('./configs/mock-proxy')
 const commander = require('child_process')
 const path = require('path')
-const config = require('./config')
+const config = require('./configs/server')
 const buildPath = config.buildPath
 const publicPath = config.publicPath
 const app = express()
-app.use(publicPath, express.static(path.join(__dirname, buildPath)))
+app.use(publicPath, express.static(path.resolve(__dirname, buildPath)))
 for (let i = 0; i < mocks.length; i++) {
   app.use(mockProxyMiddleware(mocks[i]))
 }
