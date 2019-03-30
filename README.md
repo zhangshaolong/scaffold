@@ -1,5 +1,5 @@
 # scaffold
-es6+webpack+spa
+es6+webpack+spa+simplite
 
 ```
 npm install

@@ -18,15 +18,12 @@ const setLoader = (loader) => {
   moduleLoader = loader
 }
 
-export default (path, querys, container, callback) => {
+export default (path, querys, container, context) => {
   if (!moduleLoader) {
     return
   }
-  let loaded = 0
-  let module = null
-  let tpl = null
-  moduleLoader(path)[0].then((Module) => {
-    module = new (Module.default)(querys)
+  Promise.all(moduleLoader(path)).then((values) => {
+    const module = new (values[0].default)(querys)
     const parentModule = getParentModule(container, container.tagName)
     let data
     if (parentModule) {
@@ -42,24 +39,9 @@ export default (path, querys, container, callback) => {
     module.data = data
     module.container = container
     modulesMap[path] = module
-    loaded++
-    if (loaded === 2) {
-      module.tpl = tpl
-      module.init(querys)
-      callback(module, tpl)
-    }
-  }).catch((err) => {
-    console.log(err)
-  })
-  // load tpl file
-  moduleLoader(path)[1].then((t) => {
-    loaded++
-    tpl = t.default
-    if (loaded === 2) {
-      module.tpl = tpl
-      module.init(querys)
-      callback(module, tpl)
-    }
+    module.tpl = values[1].default
+    context.module = module
+    module.init(querys)
   })
 }
 

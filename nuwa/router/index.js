@@ -1,17 +1,11 @@
 import loader from '../module/loader'
 
-const getQueryString = function (queryStr) {
-  let len = arguments.length
-  if (len === 1) {
-    let querys = {}
-    queryStr.replace(/(?:\?|&)([^=]+)=([^&$]*)/g, (all, key, val) => {
-      querys[key] = decodeURIComponent(val)
-    })
-    return querys
-  } else if (len === 2) {
-    let rst = new RegExp('[?&]' + arguments[1] + '=([^&$]*)').exec(queryStr)
-    return rst && decodeURIComponent(rst[1])
-  }
+const getQueryString = (queryStr) => {
+  const querys = {}
+  queryStr.replace(/(?:\?|&)([^=]+)=([^&$]*)/g, (all, key, val) => {
+    querys[key] = decodeURIComponent(val)
+  })
+  return querys
 }
 
 const watches = []
@@ -41,9 +35,7 @@ const Router = {
         if (oldPath !== path) {
           context.path = path
           context.module && context.module.dispose()
-          loader(modulePath, querys, rootModule, (module) => {
-            context.module = module
-          })
+          loader(modulePath, querys, rootModule, context)
         } else {
           context.module.update(querys)
         }

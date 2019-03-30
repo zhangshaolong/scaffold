@@ -80,11 +80,10 @@ class Module {
   }
 
   dispose () {
-    for (let i = 0; i < this.toBeDisposes.length; i++) {
-      this.toBeDisposes[i]()
-    }
+    this.toBeDisposes.forEach((dispose) => {
+      dispose()
+    })
     this.toBeDisposes.length = 0
-    console.log('root dispose')
   }
 }
 
@@ -101,9 +100,7 @@ class CModule extends HTMLElement {
   connectedCallback () {
     let path = this.getAttribute('path')
     if (path != null) {
-      loader(path, JSON.parse(this.getAttribute('querys')), this, (module) => {
-        this.module = module
-      })
+      loader(path, JSON.parse(this.getAttribute('querys')), this, this)
     }
   }
 
