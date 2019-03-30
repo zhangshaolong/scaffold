@@ -266,11 +266,11 @@ const htmlEncode = (str) => {
       default:
         continue
     }
-      if (index !== i) {
-        result += str.substring(index, i)
-      }
-      index = i + 1
-      result += char
+    if (index !== i) {
+      result += str.substring(index, i)
+    }
+    index = i + 1
+    result += char
   }
   if (index !== i) {
     return result + str.substring(index, i)

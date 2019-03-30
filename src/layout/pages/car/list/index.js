@@ -1,4 +1,4 @@
-import { Module } from 'nuwa'
+import { Module } from 'cmodule'
 
 export default class CarList extends Module {
   constructor (querys) {
@@ -39,9 +39,9 @@ export default class CarList extends Module {
 
   inited () {
     let datepicker = $('#datepicker').datepicker({
-      altFormat: "yy-mm-dd",
-      appendText: "(yyyy-mm-dd)",
-      dateFormat: "yy-mm-dd"
+      altFormat: 'yy-mm-dd',
+      appendText: '(yyyy-mm-dd)',
+      dateFormat: 'yy-mm-dd'
       // gotoCurrent: true,
       // onSelect: () => {
       //   datepicker.show()

@@ -1,4 +1,4 @@
-import { Module } from 'nuwa'
+import { Module } from 'cmodule'
 
 import './index.less'
 

@@ -33,7 +33,7 @@ module.exports = (isProt) => {
       resolve: {
         alias: {
           src: path.resolve(__dirname, '../../src'),
-          nuwa: path.resolve(__dirname, '../../nuwa')
+          cmodule: '@zhangshaolongjj/c-module'
         }
       },
       module: {

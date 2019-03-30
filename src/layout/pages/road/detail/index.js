@@ -1,4 +1,4 @@
-import { Module } from 'nuwa'
+import { Module } from 'cmodule'
 
 export default class RoadDetail extends Module {
   constructor (querys) {
@@ -10,9 +10,7 @@ export default class RoadDetail extends Module {
     console.log('RoadDetail update', querys)
   }
 
-  bindEvents () {
-    
-  }
+  bindEvents () {}
 
   inited () {
     console.log('road detail', this.data)

@@ -1,4 +1,4 @@
-import { Module, Router } from 'nuwa'
+import { Module, Router } from 'cmodule'
 
 import routers from '../../router'
 

@@ -1,0 +1,75 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "no-caller": "warn",//禁止使用arguments.caller或arguments.callee
+    "max-len": ["warn", {"code": 160,"tabWidth":2,"ignoreComments": true}],
+    "max-lines": ["warn", {"max": 1000, "skipBlankLines": false, "skipComments": false}], //文件最大行数，不忽略空白行和注释行 
+    "quotes": ["warn", "single"], // 字符串用单引号
+    "semi": ["warn", "never"], // 禁止分号 而不是 ASI
+    "comma-spacing": ["warn"], // 强制使用逗号后的空格
+    "no-extra-semi": "warn",// 禁止不必要的分号
+    "indent": ["warn", 2, {"SwitchCase": 1}],// 空格2个
+    "array-bracket-spacing": [2, "never"],// 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always参数：[ 之前和 ] 之后必须带空格
+    //'block-scoped-var': 0,// 在块级作用域外访问块内定义的变量是否报错提示
+    "brace-style": ["warn", "1tbs", {"allowSingleLine": true}],// if while function 后面的{必须与if在同一行，java风格。
+    //"camelcase": "warn",// 双峰驼命名格式
+    "comma-dangle": ["warn", "never"],// 数组和对象键值对最后一个逗号， never参数：不能带末尾的逗号, always参数：必须带末尾的逗号， 
+    "comma-style": ["warn", "last"],// 控制逗号在行尾出现还是在行首出现
+    //'complexity': [2, 9],// 圈复杂度
+    "computed-property-spacing": ["warn", "never"],
+    // 以方括号取对象属性时，[ 后面和 ] 前面是否需要空格, 可选参数 never, always
+    "no-multiple-empty-lines":"warn", //禁止多个空行
+    "no-const-assign": "warn",//禁止修改const声明的变量
+    "no-dupe-keys": "warn",//在创建对象字面量时不允许键重复 {a:1,a:1}
+    "no-dupe-args": "warn",//函数参数不能重复
+    "no-cond-assign": "warn",//禁止在条件表达式中使用赋值语句
+    //"no-var": "error",// 要求或禁止 var 声明中的初始化
+    "linebreak-style": ["error", "unix"],// 强制使用一致的换行风格
+    "curly": ["warn", "all"],//必须使用 if(){} 中的{}
+    "new-cap": ["warn",{
+      "capIsNew": false // 要求调用首字母大写的函数时有 new 操作符。
+    }],//函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
+    "no-mixed-requires": "warn",//声明时不能混用声明类型
+    "no-mixed-spaces-and-tabs": "warn", //禁止混用tab和空格
+    "no-multi-spaces": "warn", //不能用多余的空格
+    "no-multi-str": "warn", //字符串不能用\换行
+    //"no-nested-ternary": "warn", //禁止使用嵌套的三目运算
+    "no-new": "warn",//禁止在使用new构造一个实例后不赋值
+    "no-new-func": "warn",//禁止使用new Function
+    "no-new-object": "warn",//禁止使用new Object()
+    "no-new-require": "warn",//禁止使用new require
+    "no-new-wrappers": "warn",//禁止使用new创建包装实例，new String new Boolean new Number
+    "no-obj-calls": "warn",//不能调用内置的全局对象，比如Math() JSON()
+    "no-octal": "warn",//禁止使用八进制数字
+    "no-octal-escape": "warn",//禁止使用八进制转义序列
+    //"no-param-reassign": "warn"//禁止给参数重新赋值
+    "no-redeclare": "warn",//禁止重复声明变量
+    "no-regex-spaces": "warn",//禁止在正则表达式字面量中使用多个空格 /foo bar/
+    "no-spaced-func": "warn",//函数调用时 函数名与()之间不能有空格
+    "no-sparse-arrays": "warn",//禁止稀疏数组， [1,,2]
+    "no-trailing-spaces": "warn",//一行结束后面不要有空格
+    "no-this-before-super": "warn",//在调用super()之前不能使用this或super
+    "no-unexpected-multiline": "warn",//避免多行表达式
+    //"no-underscore-dangle": "warn",//标识符不能以_开头或结尾
+    //"no-unneeded-ternary": "warn",//禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
+    "no-void": "warn",//禁用void操作符
+    "arrow-parens": "warn",//箭头函数用小括号括起来
+    "arrow-spacing": "warn",//=>的前/后括号
+    "accessor-pairs": "warn",//在对象中使用getter/setter
+    "new-parens": "warn",//new时必须加小括号
+    //"newline-after-var": "warn",//变量声明后是否需要空一行
+    //"object-curly-spacing": ["warn", "never"],//大括号内是否允许不必要的空格
+    //"object-shorthand": "warn",//强制对象字面量缩写语法
+    //"one-var": "warn",//连续声明
+    "semi-spacing": "warn",
+    "space-after-keywords": [0, "always"],//关键字后面是否要空一格
+    "space-before-blocks": [0, "always"],//不以新行开始的块{前面要不要有空格
+    "space-before-function-paren": [0, "always"],//函数定义时括号前面要不要有空格
+    "space-in-parens": [0, "never"],//小括号里面要不要有空格
+    "space-infix-ops": 0,//中缀操作符周围要不要有空格
+    //"space-return-throw-case": 2,//return throw case后面要不要加空格
+    "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
+    "spaced-comment": 0, //注释风格要不要有空格什么的
+    //"valid-jsdoc": 0 //jsdoc规则
+  }
+}

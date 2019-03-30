@@ -2,7 +2,7 @@ import 'webpack-jquery-ui'
 import Simplite from 'simplite'
 import { configService } from 'src/common/utils'
 
-import { setLoader } from 'nuwa'
+import { setLoader, Module, Router } from 'cmodule'
 
 import 'webpack-jquery-ui/css'
 import './index.less'
@@ -19,7 +19,10 @@ const loader = (path) => {
   if (path) {
     path += '/'
   }
-  return [import(`src/layout/${path}index.js`), import(`src/layout/${path}index.tpl`)]
+  return [
+    import(`src/layout/${path}index.js`),
+    import(`src/layout/${path}index.tpl`)
+  ]
 }
 
 setLoader(loader)

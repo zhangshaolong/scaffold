@@ -1,4 +1,4 @@
-import { Module } from 'nuwa'
+import { Module } from 'cmodule'
 
 export default class RoadList extends Module {
   constructor (querys) {
