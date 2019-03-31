@@ -38,7 +38,7 @@
     "webpack-jquery-ui": "^2.0.1"
   },
   "dependencies": {
-    "@zhangshaolongjj/c-module": "0.0.3",
+    "@zhangshaolongjj/c-module": "0.0.4",
     "event-async-emitter": "0.0.3",
     "service-api": "0.0.8",
     "simplite": "0.0.2"

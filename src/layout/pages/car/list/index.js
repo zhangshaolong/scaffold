@@ -27,10 +27,10 @@ export default class CarList extends Module {
           }
         },
         {
-          type: 'element',
-          value: this.container.childNodes[2],
+          type: 'rule',
+          value: ':nth-child(1)',
           handler: (element, event) => {
-            console.log('element', element)
+            console.log('rule', ':nth-child(1)')
           }
         }
       ]

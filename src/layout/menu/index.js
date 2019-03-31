@@ -3,6 +3,7 @@ import { Module, Router } from 'cmodule'
 let menu
 
 const routerChangeHandler = (path) => {
+  console.log(Router.querys)
   if (menu) {
     menu.find('a').each((idx, a) => {
       const li = a.parentNode.parentNode

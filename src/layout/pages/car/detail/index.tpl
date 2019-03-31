@@ -12,7 +12,7 @@
 <%
   let json = JSON.stringify(data || {test: true});
 %>
-<c-module path="pages/road/list"></c-module>
+<c-module path="pages/road/list" c-props="1212" id="cm"></c-module>
 
 <div id="b">pages/road/detail{{json}}</div>
 <c-module path="pages/road/detail"></c-module>

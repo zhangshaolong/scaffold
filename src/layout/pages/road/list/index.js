@@ -1,13 +1,13 @@
-import { Module } from 'cmodule'
+import { Module, Router } from 'cmodule'
 
 export default class RoadList extends Module {
-  constructor (querys) {
-    super(querys)
-    console.log('road list', querys)
+  constructor () {
+    super()
+    console.log('road list constructor', Router.querys)
   }
 
-  update (querys) {
-    console.log('RoadList update', querys)
+  update (changed) {
+    console.log('RoadList update', changed)
   }
 
   inited () {

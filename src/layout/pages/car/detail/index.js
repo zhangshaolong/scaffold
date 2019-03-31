@@ -20,6 +20,7 @@ export default class CarDetail extends Module {
           type: 'className',
           value: 'car-name',
           handler: (element, event) => {
+            this.container.querySelector('#cm').setAttribute('c-props', new Date().getTime() + '')
             console.log('name', element)
           }
         },
@@ -31,10 +32,10 @@ export default class CarDetail extends Module {
           }
         },
         {
-          type: 'element',
-          value: this.container.childNodes[2],
+          type: 'rule',
+          value: ':nth-child(2)',
           handler: (element, event) => {
-            console.log('element', element)
+            console.log('rule', element, ':nth-child(2)')
           }
         }
       ]
@@ -51,7 +52,7 @@ export default class CarDetail extends Module {
   }
 
   update (querys) {
-    this.inited(querys)
+    // this.inited(querys)
     console.log('detail update', querys)
   }
 

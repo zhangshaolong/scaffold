@@ -6,7 +6,7 @@ import './index.less'
 
 export default class Layout extends Module {
 
-  bindEvents () {
+  inited () {
     Router.start(routers, document.getElementById('root-container'))
   }
 
