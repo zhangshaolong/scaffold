@@ -4,6 +4,8 @@ export default class CustomModule {
     this.tpl
     this.props
     this.data
+    this.render
+    this.update
     let data = {
       ee: 'hahaah哈哈'
     }

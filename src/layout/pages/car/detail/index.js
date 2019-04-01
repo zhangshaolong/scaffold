@@ -4,9 +4,9 @@ import service from 'service-api'
 
 export default class CarDetail extends Module {
 
-  constructor (querys) {
-    super(querys)
-    console.log('car detail', querys)
+  constructor () {
+    super()
+    console.log('car detail')
     this.data = {
       p: 'car detail'
     }
@@ -42,8 +42,8 @@ export default class CarDetail extends Module {
     }
   }
 
-  inited (querys) {
-    service.get('/car/detail', querys, {
+  inited () {
+    service.get('/car/detail', null, {
       context: this.container
     }).then((resp) => {
       let data = resp.data
@@ -54,9 +54,8 @@ export default class CarDetail extends Module {
     })
   }
 
-  update (querys) {
-    // this.inited(querys)
-    console.log('detail update', querys)
+  update (changed) {
+    console.log('detail update', changed)
   }
 
   dispose () {

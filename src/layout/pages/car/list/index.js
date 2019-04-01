@@ -33,6 +33,13 @@ export default class CarList extends Module {
             console.log('rule', ':nth-child(1)')
           }
         }
+      ],
+      mouseover: [
+        {
+          type: 'rule',
+          value: 'input',
+          handler: () => {}
+        }
       ]
     }
   }
