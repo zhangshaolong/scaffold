@@ -1,4 +1,4 @@
-import { Module } from 'cmodule'
+import { Module, loadModule } from 'cmodule'
 
 import service from 'service-api'
 
@@ -48,6 +48,9 @@ export default class CarDetail extends Module {
     }).then((resp) => {
       let data = resp.data
       this.render(data)
+      loadModule('pages/custom/module', this.container.querySelector('#custom-module')).then((subModuleinitReturn) => {
+        console.log(subModuleinitReturn)
+      })
     })
   }
 

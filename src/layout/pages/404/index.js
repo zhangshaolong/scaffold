@@ -1,17 +1,5 @@
-export default class NotFound {
-  constructor (querys) {
-    console.log('not found')
-  }
+import { Module } from 'cmodule'
 
-  init (context) {
-    debugger
-  }
+export default class NotFound extends Module {
 
-  update (querys) {
-    debugger
-  }
-
-  dispose () {
-    debugger
-  }
 }
