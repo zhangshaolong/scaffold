@@ -77,6 +77,7 @@ module.exports = (isProt) => {
           hash: false,
           chunksSortMode: 'dependency',
           template: path.resolve(__dirname, '../../src/index.html'),
+          favicon: path.resolve(__dirname, '../../favicon.ico'),
           minify: isProt ? {
             collapseInlineTagWhitespace: true,
             removeComments: true,
