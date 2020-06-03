@@ -2,6 +2,11 @@ import { Module, loadModule } from 'cmodule'
 
 import service from 'service-api'
 
+service.config({
+  globalContextType: 'application/json'
+  // globalContextType: 'application/x-www-form-urlencoded'
+})
+
 export default class CarDetail extends Module {
 
   constructor () {
@@ -43,7 +48,7 @@ export default class CarDetail extends Module {
   }
 
   inited () {
-    service.get('/car/detail', null, {
+    service.post('/car/detail?d=415', {a: '12', b: {c: 554}}, {
       context: this.container
     }).then((resp) => {
       let data = resp.data

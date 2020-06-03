@@ -7,6 +7,7 @@ const commander = require('child_process')
 // 可以通过下边的命令行修改本地server的端口
 // npm start --port 8880
 let port = serverConfig.devPort
+let isHttps = false // 本地服务是否开启https
 const args = process.argv
 if (args.length) {
   for (let i = 0; i < args.length; i++) {
@@ -26,6 +27,7 @@ const config = {
     host: '0.0.0.0',
     port: port,
     publicPath: publicPath,
+    https: isHttps,
     // public: 'localhost:' + port + publicPath,
     historyApiFallback: true,
     compress: true,
@@ -47,7 +49,7 @@ const config = {
       } else if (process.platform == 'darwin') {
         cmd = 'open'
       }
-      commander.exec(`${cmd} http://localhost:${port}${publicPath}/`)
+      commander.exec(`${cmd} http${isHttps ? 's' : ''}://localhost:${port}${publicPath}/`)
     }
   }
 }

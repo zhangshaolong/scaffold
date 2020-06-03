@@ -1,15 +1,17 @@
 module.exports = [
   {
-    apiConfig: {
-      type: 'prefix',
-      value: ['/car/']
+    type: 'prefix',
+    rules: ['/car/', '/audit-api/'],
+    proxyConfig: {
+      // host: 'localhost',
+      // port: 8890,
+      // isHttps: true,
+      // timeout: 30000,
+      // ignorePaths: {}
     },
-    proxyInfo: {
-      // host: 'xxx.xxx.xxx.xxx',
-      // port: 8000
-    },
-    ignoreProxyPaths: {
-    },
-    mockPath: 'mock'
+    mockConfig: {
+      path: 'mock',
+      ext: '.js'
+    }
   }
 ]

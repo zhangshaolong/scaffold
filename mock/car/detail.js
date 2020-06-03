@@ -1,4 +1,5 @@
-{
+function (params) {
+return {
   sleep: 2000,
   code: 0,
   data: {
@@ -7,4 +8,5 @@
     price: 300000
   },
   msg: 'success'
+}
 }
