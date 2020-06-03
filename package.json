@@ -10,7 +10,7 @@
     "test": "node tools/test-build.js"
   },
   "pre-commit": [
-    // "lint"
+    "lint"
   ],
   "author": "",
   "license": "ISC",
