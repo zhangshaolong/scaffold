@@ -2,7 +2,6 @@ const mockProxyMiddleware = require('mock-proxy-middleware')
 const common = require('./common')(false)
 const mocks = require('../configs/mock-proxy')
 const serverConfig = require('../configs/server')
-const commander = require('child_process')
 
 // 可以通过下边的命令行修改本地server的端口
 // npm start --port 8880
@@ -32,6 +31,8 @@ const config = {
     historyApiFallback: true,
     compress: true,
     clientLogLevel: 'none',
+    open: 'Google Chrome',
+    openPage: `http${isHttps ? 's' : ''}://localhost:${port}${publicPath}/`,
     watchOptions: {
       ignored: [/\/node_modules\//, /\/mock\//]
     },
@@ -39,17 +40,6 @@ const config = {
       for (let i = 0; i < mocks.length; i++) {
         app.use(mockProxyMiddleware(mocks[i]))
       }
-    },
-    after: () => {
-      let cmd
-      if (process.platform == 'wind32') {
-        cmd = 'start "%ProgramFiles%\Internet Explorer\iexplore.exe"'
-      } else if (process.platform == 'linux') {
-        cmd = 'xdg-open'
-      } else if (process.platform == 'darwin') {
-        cmd = 'open'
-      }
-      commander.exec(`${cmd} http${isHttps ? 's' : ''}://localhost:${port}${publicPath}/`)
     }
   }
 }
