@@ -48,15 +48,46 @@ export default class CarDetail extends Module {
   }
 
   inited () {
-    service.post('/car/detail?d=415', {a: '12', b: {c: 554}}, {
+    // service.post('/api/material/audit?d=415', {a: '12', b: {c: 554}}, {
+    //   context: this.container
+    // }).then((resp) => {
+    //   debugger
+    // }).catch((resp) => {
+    //   debugger
+    // })
+    
+    service.get('/api/material/audit?d=123', {c: '12rrr', d: {e: 51114}}, {
       context: this.container
     }).then((resp) => {
-      let data = resp.data
-      this.render(data)
-      loadModule('pages/custom/module', this.container.querySelector('#custom-module')).then((subModuleinitReturn) => {
-        console.log(subModuleinitReturn)
-      })
+      debugger
+    }).catch((resp) => {
+      debugger
     })
+
+    // service.post('/audit-api/material/audit?d=415', {a: '12', b: {c: 554}}, {
+    //   context: this.container
+    // }).then((resp) => {
+    //   debugger
+    // }).catch((resp) => {
+    //   debugger
+    // })
+
+    service.get('/audit-api/material/audit', null, {
+      context: this.container
+    }).then((resp) => {
+      debugger
+    }).catch((resp) => {
+      debugger
+    })
+    // service.post('/car/detail?d=415', {a: '12', b: {c: 554}}, {
+    //   context: this.container
+    // }).then((resp) => {
+    //   let data = resp.data
+    //   this.render(data)
+    //   loadModule('pages/custom/module', this.container.querySelector('#custom-module')).then((subModuleinitReturn) => {
+    //     console.log(subModuleinitReturn)
+    //   })
+    // })
   }
 
   update (changed) {

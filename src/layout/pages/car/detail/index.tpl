@@ -1,3 +1,5 @@
+<c-module path="pages/test-mock-proxy"></c-module>
+
 <div id="car-id">
   car id: <div class="car-name">{{data.id}}</div>
 </div>

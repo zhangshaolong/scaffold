@@ -1,13 +1,45 @@
 module.exports = [
   {
-    type: 'prefix',
-    rules: ['/car/', '/audit-api/'],
+    rules: ['^/mock-api/'],
+    mockConfig: {
+      path: 'mock',
+      ext: '.js'
+    }
+  },
+  {
+    rules: ['^/local-proxy-api/'],
     proxyConfig: {
-      // host: 'localhost',
-      // port: 8890,
+      host: 'localhost',
+      port: 8890,
       // isHttps: true,
       // timeout: 30000,
-      // ignorePaths: {}
+      excludes: [
+        '^/local-proxy-api/exclude'
+      ]
+    },
+    mockConfig: {
+      path: 'mock',
+      ext: '.js'
+    }
+  },
+  {
+    rules: ['/middle-api/'],
+    mockConfig: {
+      path: 'mock',
+      ext: '.js'
+    }
+  },
+  {
+    rules: ['^/api_v2/'],
+    proxyConfig: {
+      host: 'slardar.bytedance.net',
+      port: 443,
+      isHttps: true,
+      timeout: 30000,
+      excludes: {},
+      headers: {
+        cookie: ''
+      }
     },
     mockConfig: {
       path: 'mock',

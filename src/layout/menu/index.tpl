@@ -2,4 +2,5 @@
   <li><div><span class="ui-icon ui-icon-disk"></span><a href="#/a/b">汽车列表</a></div></li>
   <li><div><span class="ui-icon ui-icon-print"></span><a href="#/a/c">汽车详情</a></div></li>
   <li><div><span class="ui-icon ui-icon-print"></span><a href="#/a/c?a={{ new Date().getTime() }}">汽车详情</a></div></li>
+  <li><div><span class="ui-icon ui-icon-star"></span><a href="#/mock-proxy?a={{ new Date().getTime() }}">mock proxy测试</a></div></li>
 </ul>
