@@ -2,6 +2,7 @@ const mockProxyMiddleware = require('mock-proxy-middleware')
 const common = require('./common')(false)
 const mocks = require('../configs/mock-proxy')
 const serverConfig = require('../configs/server')
+const path = require('path')
 
 // 可以通过下边的命令行修改本地server的端口
 // npm start --port 8880
@@ -37,9 +38,7 @@ const config = {
       ignored: [/\/node_modules\//, /\/mock\//]
     },
     before: (app) => {
-      for (let i = 0; i < mocks.length; i++) {
-        app.use(mockProxyMiddleware(mocks[i]))
-      }
+      app.use(mockProxyMiddleware(path.resolve(__dirname, '../configs/mock-proxy.js')))
     }
   }
 }

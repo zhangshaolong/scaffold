@@ -23,4 +23,11 @@
     <button class="click" path="/api_v2/app/app_list/list">测试代理到slardar</button>
     <div></div>
   </div>
+
+  <div>
+    <button class="click" path="/api_v2/app/pro_dashboard/overview" params={{JSON.stringify({"aid":13,"os":"Android","region":"cn","days":30,"dimension":"build_version","without_cache":false})}}>测试代理到slardar /api_v2/app/pro_dashboard/overview</button>
+    <div></div>
+  </div>
+
+  
 </div>

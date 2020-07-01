@@ -15,7 +15,10 @@ module.exports = [
       // timeout: 30000,
       excludes: [
         '^/local-proxy-api/exclude'
-      ]
+      ],
+      redirect: (path) => {
+        return '/audit-api/material/audit'
+      }
     },
     mockConfig: {
       path: 'mock',

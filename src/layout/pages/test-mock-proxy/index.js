@@ -22,11 +22,17 @@ export default class TestMockProxy extends Module {
           type: 'className',
           value: 'click',
           handler: (element, event) => {
-            service.post(element.getAttribute('path'), {
-              name: 'test',
-              id: 122,
-              ts: Date.now()
-            }, {
+            let params = element.getAttribute('params')
+            if (params) {
+              params = JSON.parse(params)
+            } else {
+              params = {
+                name: 'test',
+                id: 122,
+                ts: Date.now()
+              }
+            }
+            service.post(element.getAttribute('path'), params, {
               context: element.parentNode
             }).then((resp) => {
               element.nextSibling.innerHTML = JSON.stringify(resp)

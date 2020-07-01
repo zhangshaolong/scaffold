@@ -10,6 +10,7 @@
  * @desc 代理规则排除的接口
  */
 let total = 0
+
 return function (params) {
   return {
     sleep: 500,
